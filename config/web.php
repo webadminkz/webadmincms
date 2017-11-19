@@ -9,9 +9,24 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'language' => 'ru-RU',
+    'defaultRoute' => 'main/default/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+    ],
+    'modules' => [
+        'main' => [
+            'class' => 'app\modules\main\Module',
+        ],
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+        ],
+        'auth' => [
+            'class' => 'app\modules\auth\Module',
+        ],
+        'contact' => [
+            'class' => 'app\modules\contact\Module',
+        ],
     ],
     'components' => [
         'request' => [
@@ -22,11 +37,12 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\modules\auth\models\User',
             'enableAutoLogin' => true,
+            'loginUrl' => ['auth/default/login'],
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'main/default/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -57,9 +73,15 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
-                '<_c:[\w\-]+>' => '<_c>/index',
-                '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',
+                '' => 'main/default/index',
+                'contact' => 'contact/default/index',
+                '<_a:error>' => 'main/default/<_a>',
+                '<_a:(login|logout)>' => 'user/default/<_a>',
+
+                '<_m:[\w\-]+>' => '<_m>/default/index',
+                '<_m:[\w\-]+>/<_c:[\w\-]+>' => '<_m>/<_c>/index',
+                '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/view',
+                '<_m:[\w\-]+>/<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/<_a>',
             ],
         ],
     ],
