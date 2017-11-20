@@ -41,6 +41,10 @@ You can then install this project template using the following command:
 ~~~
 php composer.phar create-project --prefer-dist --stability=dev webadminkz/Webadmincms basic
 ~~~
+migrate tables
+~~~
+php yii migrate/up
+~~~
 
 Now you should be able to access the application through the following URL, assuming `basic` is the directory
 directly under the Web root.

@@ -38,20 +38,13 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/main/default/index']],
-            ['label' => 'Contact', 'url' => ['/contact/default/index']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/auth/default/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/auth/default/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
+            ['label' => 'Главная', 'url' => ['/main/default/index']],
+            ['label' => 'Контакты', 'url' => ['/contact/default/index']],
+            Yii::$app->user->isGuest ?
+                ['label' => 'Вход', 'url' => ['/auth/default/login']] :
+                ['label' => 'Выход (' . Yii::$app->user->identity->username . ')',
+                    'url' => ['/auth/default/logout'],
+                    'linkOptions' => ['data-method' => 'post']],
         ],
     ]);
     NavBar::end();
@@ -68,9 +61,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">&copy; <?= Yii::$app->name; ?> <?= date('Y') ?></p>
     </div>
 </footer>
 
