@@ -29,5 +29,6 @@ class AppAsset extends AssetBundle
         'app\assets\RespondAsset',
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+		'yii\bootstrap\BootstrapPluginAsset',
     ];
 }

@@ -23,8 +23,8 @@ class User extends \app\modules\auth\models\User
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios[self::SCENARIO_ADMIN_CREATE] = ['username', 'email', 'newPassword', 'newPasswordRepeat'];
-        $scenarios[self::SCENARIO_ADMIN_UPDATE] = ['username', 'email', 'newPassword', 'newPasswordRepeat'];
+        $scenarios[self::SCENARIO_ADMIN_CREATE] = ['username', 'email', 'status', 'role', 'newPassword', 'newPasswordRepeat'];
+        $scenarios[self::SCENARIO_ADMIN_UPDATE] = ['username', 'email', 'status', 'role', 'newPassword', 'newPasswordRepeat'];
         return $scenarios;
     }
 

@@ -29,6 +29,11 @@ $config = [
         ],
     ],
     'components' => [
+		'authManager' => [
+			'class' => 'app\components\AuthManager',
+			'defaultRoles' => ['user', 'admin'],
+			'itemFile' => '@app/rbac/items.php',
+		],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '6EIfs7mhTgJ6vlQu7shchaG5YtOEAe_6',
@@ -52,6 +57,17 @@ $config = [
         'assetManager' => [
             'linkAssets' => true,
             'appendTimestamp' => true,
+			'bundles' => [
+				'yii\web\JqueryAsset' => [
+					'js' => [YII_DEBUG ? 'jquery.js' : 'jquery.min.js'],
+				],
+				'yii\bootstrap\BootstrapAsset' => [
+					'css' => [YII_DEBUG ? 'css/bootstrap.css' : 'css/bootstrap.min.css'],
+				],
+				'yii\bootstrap\BootstrapPluginAsset' => [
+					'js' => [YII_DEBUG ? 'js/bootstrap.js' : 'js/bootstrap.min.js'],
+				],
+			],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -76,7 +92,7 @@ $config = [
                 '' => 'main/default/index',
                 'contact' => 'contact/default/index',
                 '<_a:error>' => 'main/default/<_a>',
-                '<_a:(login|logout)>' => 'user/default/<_a>',
+				'<_a:(login|logout|password-reset-request|password-reset)>' => 'user/default/<_a>',
 
                 '<_m:[\w\-]+>' => '<_m>/default/index',
                 '<_m:[\w\-]+>/<_c:[\w\-]+>' => '<_m>/<_c>/index',

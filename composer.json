@@ -19,7 +19,10 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "bower-asset/html5shiv": "*",
-        "bower-asset/respond": "*"
+        "bower-asset/respond": "*",
+        "bower-asset/fontawesome": "^4.7",
+        "bower-asset/metisMenu": "*",
+        "paulzi/yii2-adjacency-list": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

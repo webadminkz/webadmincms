@@ -30,5 +30,7 @@ class AdminAsset extends AssetBundle
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
         'yii\bootstrap\BootstrapPluginAsset',
+		'app\assets\MetisMenuAsset',
+		'app\assets\FontAwesomeAsset',
     ];
 }

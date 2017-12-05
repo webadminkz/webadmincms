@@ -23,6 +23,9 @@ class m171119_084854_create_user_table extends Migration
             'email' => $this->string()->notNull()->unique(),
             'auth_key' => $this->string(32)->notNull(),
             'password_hash' => $this->string()->notNull(),
+			'password_reset_token' => $this->string(),
+			'role' => $this->string(64),
+			'status' => $this->smallInteger()->notNull()->defaultValue(0),
         ], $tableOptions);
 
         $this->createIndex('idx-{$table}-email', $table, 'email');
@@ -31,6 +34,7 @@ class m171119_084854_create_user_table extends Migration
             'email' => 'admin@webadmin.kz',
             'password_hash' => Yii::$app->security->generatePasswordHash('admin'),
             'auth_key' => Yii::$app->security->generateRandomString(),
+			'status' => 1,
         ]);
     }
 

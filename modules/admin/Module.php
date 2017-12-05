@@ -22,7 +22,7 @@ class Module extends \yii\base\Module
         parent::init();
 
 
-        $this->layout = '/admin';
+        $this->layout = 'admin';
         Yii::$app->errorHandler->errorAction = 'admin/default/error';
     }
     public function behaviors()
@@ -33,7 +33,7 @@ class Module extends \yii\base\Module
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['admin'],
                     ],
                 ],
             ],

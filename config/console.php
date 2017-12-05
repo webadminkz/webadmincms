@@ -10,6 +10,11 @@ $config = [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
     'components' => [
+		'authManager' => [
+			'class' => 'app\components\AuthManager',
+			'defaultRoles' => ['user', 'admin'],
+			'itemFile' => '@app/rbac/items.php',
+		],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
